@@ -13,7 +13,7 @@ export default function CreatePost({}: Props) {
   const { setImagePrevPost } = useStore()
 
   // React.useEffect(() => {
-  setImagePrevPost(null)
+  //setImagePrevPost(null)
   // }, [])
 
   return (
