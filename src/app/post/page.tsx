@@ -35,7 +35,7 @@ export default function Page({}: Props) {
     setLoading(true)
     const form = new FormData(e.target)
 
-    form.set('image', String(imgPrev))
+    //form.set('image', String(imgPrev))
 
     try {
       const response = await axiosData.post('/post', form)
