@@ -43,7 +43,7 @@ export default function Home() {
             ) : (
               <div>
                 {
-                  data.isSuccess ? (
+                  data.isSuccess && data.data?.data?.length ? (
                     <div>
                       {
                         data.data?.data?.map((value: any, index: number) => (
