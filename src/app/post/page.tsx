@@ -21,7 +21,8 @@ export default function Page({}: Props) {
   const router = useRouter()
   const { data: session } = useSession()
   const { imagePrevPost, setImagePrevPost } = useStore()
-  const [imgPrev, setImgPrev] = React.useState<Blob|null>(imagePrevPost)
+  const [imgPrev, setImgPrev] = React.useState<any>(imagePrevPost)
+  //const [imgPrev, setImgPrev] = React.useState<Blob|null>(imagePrevPost)
   const [loading, setLoading] = React.useState<boolean>()
 
   const handleImage = (e: any) => {
@@ -35,7 +36,7 @@ export default function Page({}: Props) {
     setLoading(true)
     const form = new FormData(e.target)
 
-    //form.set('image', String(imgPrev))
+    form.set('image', imgPrev)
 
     try {
       const response = await axiosData.post('/post', form)
