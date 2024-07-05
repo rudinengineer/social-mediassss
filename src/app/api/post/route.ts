@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
                     caption: formData.get('caption') as string,
                     image: res.result.secure_url,
                     publicImageId: res.result.public_id,
-                    status: 'public,
+                    status: 'public',
                     userId: Number(user?.id)
                 }
             })
