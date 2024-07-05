@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  username  String    @unique
+  email     String    @unique
+  password  String
+  image     String?
+  gender    Gender?
+  bio       String?
+  verified  Boolean   @default(false)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  comments  Comment[]
+  posts     Post[]
+}
+
+model Post {
+  id            Int        @id @default(autoincrement())
+  userId        Int
+  caption       String?
+  image         String?
+  status        statusPost @default(public)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  publicImageId String?
+  comments      Comment[]
+  author        User       @relation(fields: [userId], references: [id])
+  likes         React[]
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  postId    Int
+  replayId  Int?
+  image String?
+  publicId  String?
+  comment   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  post      Post     @relation(fields: [postId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model React {
+  id        Int       @id @default(autoincrement())
+  userId    Int
+  postId    Int
+  type      typeReact @default(like)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  post      Post      @relation(fields: [postId], references: [id])
+}
+
+enum Gender {
+  male
+  female
+}
+
+enum statusPost {
+  public
+  private
+  draft
+}
+
+enum typeReact {
+  like
+  love
+  haha
+  wow
+  sad
+  angry
+}
