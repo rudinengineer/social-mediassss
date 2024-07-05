@@ -20,12 +20,7 @@ export default function RootLayout({
 
   return (
     <Html>
-      <Provider>
-        <ReactQueryProvider>
-          <ToastContainer />
-          { children }
-        </ReactQueryProvider>
-      </Provider>
+      <h1>Oke</h1>
     </Html>
   );
 }
