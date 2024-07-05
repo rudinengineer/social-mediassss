@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // const baseurl = 'http://localhost:3000/api'
-const baseurl = '/api'
+const baseurl = 'https://social-media-mauve-alpha.vercel.app/api'
 
 export const baseAxios = axios.create({
     baseURL: baseurl,
